@@ -225,7 +225,7 @@ Shader "Crest/Underwater Curtain"
 				}
 #endif // _CAUSTICS_ON
 
-				half3 col = lerp(sceneColour, scatterCol, 1.0 - exp(-_DepthFogDensity.xyz * sceneZ));
+				half3 col = lerp(sceneColour, scatterCol, 0.89 - exp(-_DepthFogDensity.xyz * sceneZ));
 
 				return half4(col, 1.0);
 			}
