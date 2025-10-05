@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033a3cb518226af4295d5613320deb1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EarthTransition
-  earthMat: {fileID: 0}
+  earthMat: {fileID: 2100000, guid: b6754b382500b6f478b02fb2696724e7, type: 2}
   delay: 5
   transitionTime: 3
 --- !u!114 &846105233
