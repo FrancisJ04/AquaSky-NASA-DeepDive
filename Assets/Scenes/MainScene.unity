@@ -490,9 +490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4148c37152ce68d47ad51cc82ded17b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody: {fileID: 330585546}
-  mouseSensitivity: 60
   moveSpeed: 5
+  mouseSensitivity: 60
+  cameraTransform: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +551,8 @@ GameObject:
   - component: {fileID: 846105226}
   - component: {fileID: 846105230}
   - component: {fileID: 846105231}
+  - component: {fileID: 846105232}
+  - component: {fileID: 846105233}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -605,6 +607,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 1683126e1dd776a4db908ca88829a532, type: 2}
+  - {fileID: 2100000, guid: ee3e1c53f2648fa429ec4101f6a1f6fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -679,6 +682,37 @@ MonoBehaviour:
   sceneToLoad: OceanScene
   rayDistance: 100
   earth: {fileID: 0}
+--- !u!114 &846105232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846105225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033a3cb518226af4295d5613320deb1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EarthTransition
+  earthMat: {fileID: 0}
+  delay: 5
+  transitionTime: 3
+--- !u!114 &846105233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846105225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18603db8003a84448b97ec778c7206e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EarthMaterialChanger
+  normalMaterial: {fileID: 2100000, guid: b6754b382500b6f478b02fb2696724e7, type: 2}
+  gravityGradientMaterial: {fileID: 2100000, guid: ee3e1c53f2648fa429ec4101f6a1f6fb,
+    type: 2}
+  delay: 5
 --- !u!1 &1034159114
 GameObject:
   m_ObjectHideFlags: 0
