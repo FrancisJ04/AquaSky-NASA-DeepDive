@@ -2,30 +2,72 @@ using UnityEngine;
 
 public class EarthMaterialChanger : MonoBehaviour
 {
-    [Header("Asignar materiales desde el Inspector")]
-    public Material normalMaterial;
-    public Material gravityGradientMaterial;
+    [Header("Materiales del planeta")]
+    public Material normalMaterial;             // Tierra normal
+    public Material gravityGradientMaterial;    // Gradiente gravitacional
+    public Material colorDataMaterial;          // ColorData.png
+    public Material clorofilaDataMaterial;      // ClorofilaData.jpg
 
-    [Header("Tiempo antes del cambio (segundos)")]
-    public float delay = 5f;
+    [Header("Imágenes flotantes")]
+    public GameObject floatingImageGradient;    // Imagen del gradiente
+    public GameObject floatingImageColorData;   // Imagen del ColorData
+    public GameObject floatingImageClorofila;   // Imagen del ClorofilaData
+
+    [Header("Tiempos (segundos)")]
+    public float firstDelay = 5f;               // Espera inicial antes del gradiente
+    public float secondDelay = 5f;              // Espera después del gradiente
+    public float thirdDelay = 5f;               // Espera después del ColorData
 
     private Renderer earthRenderer;
 
     void Start()
     {
-        // Obtiene el Renderer del objeto actual (la esfera)
         earthRenderer = GetComponent<Renderer>();
 
-        // Establece el material inicial
+        // Estado inicial
         earthRenderer.material = normalMaterial;
 
-        // Ejecuta el cambio después de 'delay' segundos
-        Invoke(nameof(ChangeToGravityGradient), delay);
+        if (floatingImageGradient != null)
+            floatingImageGradient.SetActive(false);
+        if (floatingImageColorData != null)
+            floatingImageColorData.SetActive(false);
+        if (floatingImageClorofila != null)
+            floatingImageClorofila.SetActive(false);
+
+        // Primera transición
+        Invoke(nameof(ChangeToGravityGradient), firstDelay);
     }
 
     void ChangeToGravityGradient()
     {
         earthRenderer.material = gravityGradientMaterial;
+
+        if (floatingImageGradient != null)
+            floatingImageGradient.SetActive(true);
+
+        Invoke(nameof(ChangeToColorData), secondDelay);
+    }
+
+    void ChangeToColorData()
+    {
+        earthRenderer.material = colorDataMaterial;
+
+        if (floatingImageGradient != null)
+            floatingImageGradient.SetActive(false);
+        if (floatingImageColorData != null)
+            floatingImageColorData.SetActive(true);
+
+        Invoke(nameof(ChangeToClorofilaData), thirdDelay);
+    }
+
+    void ChangeToClorofilaData()
+    {
+        earthRenderer.material = clorofilaDataMaterial;
+
+        if (floatingImageColorData != null)
+            floatingImageColorData.SetActive(false);
+        if (floatingImageClorofila != null)
+            floatingImageClorofila.SetActive(true);
     }
 }
 
